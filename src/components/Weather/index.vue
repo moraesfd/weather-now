@@ -1,12 +1,12 @@
 <template>
   <section class="weather-component">
-    <WeatherCard v-for="index in 3" :key="index" />
+    <WeatherCard v-for="index in counter" :key="index" />
   </section>
 </template>
 <script>
 import WeatherCard from './WeatherCard'
 export default {
-  name: "WeatherComponent",
+  name: 'WeatherComponent',
   components: {
     WeatherCard
   },
@@ -22,11 +22,12 @@ export default {
   width: 100%;
   height: 100%;
   min-height: 800px;
-  padding: 50px 0;
   background-color: $color-bg-default;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
+  gap: 50px;
+  margin-top: 60px;
 }
 </style>
