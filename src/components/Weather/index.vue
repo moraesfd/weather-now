@@ -3,6 +3,7 @@
     <WeatherCard v-for="index in counter" :key="index" />
   </section>
 </template>
+
 <script>
 import WeatherCard from './WeatherCard'
 export default {
@@ -17,6 +18,7 @@ export default {
   }
 }
 </script>
+
 <style lang="scss">
 .weather-component {
   width: 100%;
