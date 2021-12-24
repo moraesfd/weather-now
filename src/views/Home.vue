@@ -3,7 +3,7 @@
     <HeaderComponent />
     <WeatherComponent />
     <FooterComponent
-      info="Teste de desenvolvimento Front-End realizado para a vaga na Conta Azul. 2021."
+      info="Weather Now - Uma aplicação teste que mostra a temperatura agora"
     />
   </div>
 </template>
@@ -15,6 +15,25 @@ import FooterComponent from '@/components/Footer'
 
 export default {
   name: 'HomePage',
+  metaInfo() {
+    return {
+      title: "Weather Now",
+      meta: [
+        {
+          name: "description",
+          content:
+            "Weather Now - Uma aplicação teste que mostra a temperatura agora",
+        },
+        {
+          property: "og:title",
+          content: "Weather Now",
+        },
+        { property: "og:site_name", content: "Weather Now" },
+        { property: "og:type", content: "website" },
+        { name: "robots", content: "index,follow" },
+      ],
+    };
+  },
   components: {
     HeaderComponent,
     WeatherComponent,
