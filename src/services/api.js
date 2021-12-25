@@ -1,7 +1,6 @@
 import axios from 'axios'
 
 export default {
-  city: 'nuuk',
   baseUrl: 'http://api.openweathermap.org/data/2.5/weather',
   getUrl() {
     return this.baseUrl

@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <HeaderComponent />
-    <WeatherComponent />
+    <WeatherComponent :weather-list="weatherFromApi" />
     <p>
       {{ weatherFromApi }}
     </p>
@@ -19,11 +19,6 @@ import ApiService from '../services/api.js'
 
 export default {
   name: 'HomePage',
-  data() {
-    return {
-      weatherFromApi: null
-    }
-  },
   metaInfo() {
     return {
       title: 'Weather Now',
@@ -43,17 +38,38 @@ export default {
       ]
     }
   },
+  data() {
+    return {
+      listWeatherCities: ['Nuuk, GL', 'Urubici, BR', 'Nairobi, KE'],
+      weatherFromApi: []
+    }
+  },
   components: {
     HeaderComponent,
     WeatherComponent,
     FooterComponent
   },
   mounted() {
-    this.getDataFromApi()
+    this.weatherFromApi = this.getWeatherListDataFromApi(this.listWeatherCities)
+    window.setInterval(() => {
+      this.weatherFromApi = this.getWeatherListDataFromApi(
+        this.listWeatherCities
+      )
+    }, 10000)
   },
   methods: {
-    async getDataFromApi() {
-      this.weatherFromApi = await ApiService.getWeatherByCity('Nuuk')
+    getWeatherListDataFromApi(list) {
+      let listWeatherResponse = []
+      list.map(async (city) => {
+        let weatherCity = {
+          location: city,
+          weather: await ApiService.getWeatherByCity(city),
+          updated_at: new Date()
+        }
+        console.log(weatherCity)
+        listWeatherResponse.push(weatherCity)
+      })
+      return listWeatherResponse
     }
   }
 }
