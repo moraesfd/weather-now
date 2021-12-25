@@ -4,9 +4,13 @@
     @mouseover="activeExtraInfo = true"
     @mouseleave="activeExtraInfo = false"
   >
-    <WeatherCardHeader :headerText="'Nuuk, GL'" />
-    <WeatherCardTemperature :temperature="'-4º'" />
-    <WeatherCardFooter :active="activeExtraInfo" />
+    <WeatherCardHeader :header-text="weatherLocation.location" />
+    <WeatherCardTemperature :temperature="weatherLocation.weather.temp" />
+    <WeatherCardFooter
+      :active="activeExtraInfo"
+      :info="weatherLocation.weather"
+      :updated-at="weatherLocation.updated_at"
+    />
   </div>
 </template>
 
@@ -17,6 +21,9 @@ import WeatherCardTemperature from './WeatherCardTemperature.vue'
 
 export default {
   name: 'WeatherCard',
+  props: {
+    weatherLocation: Object
+  },
   data() {
     return {
       activeExtraInfo: false
