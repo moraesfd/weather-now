@@ -1,8 +1,12 @@
 <template>
   <div class="weather-card-temperature">
     <h3 class="weather-card-temperature__text">
-      <span class="weather-card-temperature__text--blue">
-        {{ temperature }}
+      <span
+        :class="
+          'weather-card-temperature__text--' + getTemperatureColor(temperature)
+        "
+      >
+        {{ Math.floor(temperature) + 'º' }}
       </span>
     </h3>
   </div>
@@ -12,7 +16,28 @@
 export default {
   name: 'WeatherCardTemperature',
   props: {
-    temperature: String
+    temperature: Number
+  },
+  data() {
+    return {
+      temperatureType: {
+        cold: 5,
+        normal: 25
+      }
+    }
+  },
+  methods: {
+    getTemperatureColor(temperature) {
+      if (temperature <= this.temperatureType.cold) {
+        return 'blue'
+      } else if (
+        temperature > 5 &&
+        temperature <= this.temperatureType.normal
+      ) {
+        return 'orange'
+      }
+      return 'red'
+    }
   }
 }
 </script>
