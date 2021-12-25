@@ -1,6 +1,10 @@
 <template>
   <section class="weather-component">
-    <WeatherCard v-for="index in counter" :key="index" />
+    <WeatherCard
+      v-for="(weatherLocation, index) in weatherList"
+      :key="index"
+      :weather-location="weatherLocation"
+    />
   </section>
 </template>
 
@@ -10,6 +14,9 @@ export default {
   name: 'WeatherComponent',
   components: {
     WeatherCard
+  },
+  props: {
+    weatherList: Array
   },
   data() {
     return {

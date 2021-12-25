@@ -3,15 +3,17 @@
     <div class="weather-card-footer__top" v-if="active">
       <div class="left">
         <h4 class="title">Humidity</h4>
-        <h4 class="info">{{ info.humidity }}</h4>
+        <h4 class="info">{{ info.humidity + '%' }}</h4>
       </div>
       <div class="right">
         <h4 class="title">Pressure</h4>
-        <h4 class="info">{{ info.pressure }}</h4>
+        <h4 class="info">{{ info.pressure + 'hPa' }}</h4>
       </div>
     </div>
     <div class="weather-card-footer__bottom">
-      <h5 class="updated">Updated at {{ info.updated }}</h5>
+      <h5 class="updated">
+        Updated at {{ updatedAt.toLocaleTimeString('en-US') }}
+      </h5>
     </div>
   </div>
 </template>
@@ -20,16 +22,9 @@
 export default {
   name: 'WeatherCardFooter',
   props: {
-    active: Boolean
-  },
-  data() {
-    return {
-      info: {
-        humidity: '75%',
-        pressure: '892hPa',
-        updated: '02:48:27 PM'
-      }
-    }
+    active: Boolean,
+    info: Object,
+    updatedAt: Date
   }
 }
 </script>
