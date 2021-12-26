@@ -5,6 +5,7 @@
       :key="index"
       :weather-location="weatherLocation"
     />
+    <h1>{{ weatherList }}</h1>
   </section>
 </template>
 
@@ -15,12 +16,18 @@ export default {
   components: {
     WeatherCard
   },
-  props: {
-    weatherList: Array
-  },
   data() {
     return {
-      counter: 3
+      listWeatherCities: ['Nuuk, GL', 'Urubici, BR', 'Nairobi, KE']
+    }
+  },
+  mounted() {
+    this.$store.commit('updateListWeatherCities', this.listWeatherCities)
+    this.$store.dispatch('getWeatherList')
+  },
+  computed: {
+    weatherList() {
+      return this.$store.getters.weatherList
     }
   }
 }

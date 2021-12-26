@@ -4,13 +4,26 @@
     @mouseover="activeExtraInfo = true"
     @mouseleave="activeExtraInfo = false"
   >
-    <WeatherCardHeader :header-text="weatherLocation.location" />
-    <WeatherCardTemperature :temperature="weatherLocation.weather.temp" />
-    <WeatherCardFooter
-      :active="activeExtraInfo"
-      :info="weatherLocation.weather"
-      :updated-at="weatherLocation.updated_at"
+    <WeatherCardHeader
+      :header-text="weatherLocation.location ? weatherLocation.location : ''"
     />
+    <div v-if="loadingStatus" class="loading">
+      <Spinner />
+    </div>
+    <div v-else class="content">
+      <WeatherCardTemperature
+        :temperature="
+          weatherLocation.weather.temp ? weatherLocation.weather.temp : ''
+        "
+      />
+      <WeatherCardFooter
+        :active="activeExtraInfo"
+        :info="weatherLocation.weather ? weatherLocation.weather : ''"
+        :updated-at="
+          weatherLocation.updated_at ? weatherLocation.updated_at : ''
+        "
+      />
+    </div>
   </div>
 </template>
 
@@ -18,6 +31,7 @@
 import WeatherCardFooter from './WeatherCardFooter.vue'
 import WeatherCardHeader from './WeatherCardHeader.vue'
 import WeatherCardTemperature from './WeatherCardTemperature.vue'
+import Spinner from 'vue-simple-spinner'
 
 export default {
   name: 'WeatherCard',
@@ -32,7 +46,13 @@ export default {
   components: {
     WeatherCardHeader,
     WeatherCardTemperature,
-    WeatherCardFooter
+    WeatherCardFooter,
+    Spinner
+  },
+  computed: {
+    loadingStatus() {
+      return this.$store.getters.loadingStatus
+    }
   }
 }
 </script>
