@@ -1,10 +1,7 @@
 <template>
   <div class="home">
     <HeaderComponent />
-    <WeatherComponent :weather-list="weatherFromApi" />
-    <p>
-      {{ weatherFromApi }}
-    </p>
+    <WeatherComponent />
     <FooterComponent
       info="Weather Now - Uma aplicação teste que mostra a temperatura agora. 2021."
     />
@@ -15,7 +12,6 @@
 import HeaderComponent from '@/components/Header'
 import WeatherComponent from '@/components/Weather'
 import FooterComponent from '@/components/Footer'
-import ApiService from '../services/api.js'
 
 export default {
   name: 'HomePage',
@@ -38,39 +34,10 @@ export default {
       ]
     }
   },
-  data() {
-    return {
-      listWeatherCities: ['Nuuk, GL', 'Urubici, BR', 'Nairobi, KE'],
-      weatherFromApi: []
-    }
-  },
   components: {
     HeaderComponent,
     WeatherComponent,
     FooterComponent
-  },
-  mounted() {
-    this.weatherFromApi = this.getWeatherListDataFromApi(this.listWeatherCities)
-    window.setInterval(() => {
-      this.weatherFromApi = this.getWeatherListDataFromApi(
-        this.listWeatherCities
-      )
-    }, 10000)
-  },
-  methods: {
-    getWeatherListDataFromApi(list) {
-      let listWeatherResponse = []
-      list.map(async (city) => {
-        let weatherCity = {
-          location: city,
-          weather: await ApiService.getWeatherByCity(city),
-          updated_at: new Date()
-        }
-        console.log(weatherCity)
-        listWeatherResponse.push(weatherCity)
-      })
-      return listWeatherResponse
-    }
   }
 }
 </script>
