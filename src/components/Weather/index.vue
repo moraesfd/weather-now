@@ -22,7 +22,7 @@ export default {
   data() {
     return {
       listWeatherCities: ['Nuuk, GL', 'Urubici, BR', 'Nairobi, KE'],
-      minutesToUpdateWeather: 1
+      minutesToUpdateWeather: 10
     }
   },
   mounted() {

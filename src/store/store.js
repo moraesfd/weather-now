@@ -46,7 +46,7 @@ export const store = new Vuex.Store({
       commit('setUpdatedAt', new Date())
       setTimeout(function () {
         commit('setLoadingStatus', false)
-      }, 2000)
+      }, 3000)
     }
   },
   getters: {
