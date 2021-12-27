@@ -1,16 +1,19 @@
 <template>
   <section class="weather-component">
     <WeatherCard
-      v-for="(weatherLocation, index) in weatherList"
+      v-for="(weatherLocation, index) in orderedWeatherList"
       :key="index"
-      :weather-location="weatherLocation"
+      :weather-location="weatherLocation[0]"
+      :weather-header="listWeatherCities[index]"
     />
-    <h1>{{ weatherList }}</h1>
   </section>
 </template>
 
 <script>
 import WeatherCard from './WeatherCard'
+import { mapActions, mapGetters } from 'vuex'
+import Utils from '@/services/utils'
+
 export default {
   name: 'WeatherComponent',
   components: {
@@ -18,16 +21,36 @@ export default {
   },
   data() {
     return {
-      listWeatherCities: ['Nuuk, GL', 'Urubici, BR', 'Nairobi, KE']
+      listWeatherCities: ['Nuuk, GL', 'Urubici, BR', 'Nairobi, KE'],
+      minutesToUpdateWeather: 1
     }
   },
   mounted() {
-    this.$store.commit('updateListWeatherCities', this.listWeatherCities)
-    this.$store.dispatch('getWeatherList')
+    this.$store.commit('setListWeatherCities', this.listWeatherCities)
+    this.loadOrUpdateWeatherData(this.updatedAt, this.minutesToUpdateWeather)
+    setInterval(() => {
+      this.loadOrUpdateWeatherData(this.updatedAt, this.minutesToUpdateWeather)
+    }, 1000)
+  },
+  methods: {
+    ...mapActions(['setWeatherList']),
+    loadOrUpdateWeatherData(date, minutes) {
+      if (!date) {
+        this.setWeatherList()
+      }
+      let lastUpdate = new Date(date)
+      let nextUpdate = new Date()
+      const minutesToAdd = minutes * 60 * 1000
+      nextUpdate.setTime(lastUpdate.getTime() + minutesToAdd)
+      if (nextUpdate <= new Date()) {
+        this.setWeatherList()
+      }
+    }
   },
   computed: {
-    weatherList() {
-      return this.$store.getters.weatherList
+    ...mapGetters({ weatherList: 'getWeatherList', updatedAt: 'getUpdatedAt' }),
+    orderedWeatherList() {
+      return Utils.orderListByArray(this.weatherList, this.listWeatherCities)
     }
   }
 }
