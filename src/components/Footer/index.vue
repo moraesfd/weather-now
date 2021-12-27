@@ -6,11 +6,11 @@
 
 <script>
 export default {
-  name: "FooterComponent",
+  name: 'FooterComponent',
   props: {
-    info: String,
-  },
-};
+    info: String
+  }
+}
 </script>
 
 <style lang="scss">
