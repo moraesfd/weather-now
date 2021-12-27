@@ -1,12 +1,12 @@
 <template>
   <div class="header-logo">
-    <img src="@/assets/images/logo.svg" alt="" class="header-logo__img">
+    <img src="@/assets/images/logo.svg" alt="" class="header-logo__img" />
   </div>
 </template>
 
 <script>
 export default {
-  name: "HeaderLogo"
+  name: 'HeaderLogo'
 }
 </script>
 

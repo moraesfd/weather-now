@@ -1,26 +1,30 @@
 // colors
-$color-bg-default: #F1F1F1;
-$color-divider: #EBEBEB;
+$color-bg-default: #f1f1f1;
+$color-divider: #ebebeb;
 $color-box-shadow: #333333;
-$color-light-gray: #B4B4B4;
-$color-dark-gray: #737C84;
-$color-blue: #69A3FF;
-$color-orange: #FF9632;
-$color-red: #ED1946;
+$color-light-gray: #b4b4b4;
+$color-dark-gray: #737c84;
+$color-blue: #69a3ff;
+$color-orange: #ff9632;
+$color-red: #ed1946;
 
 // breakpoints
 @mixin breakpoint($point) {
-    @if $point == lg {
-      @media (min-width: 1200px) { @content ; }
-   }
-     @else if $point == md {
-      @media (min-width: 990px) { @content ; }
-   }
-    @else if $point == sm {
-      @media (min-width: 767px)  { @content ; }
-   }
-   @else if $point == xs {
-      @media (max-width: 420px)  { @content ; }
- 
-   }
- }
+  @if $point == lg {
+    @media (min-width: 1200px) {
+      @content;
+    }
+  } @else if $point == md {
+    @media (min-width: 990px) {
+      @content;
+    }
+  } @else if $point == sm {
+    @media (min-width: 767px) {
+      @content;
+    }
+  } @else if $point == xs {
+    @media (max-width: 420px) {
+      @content;
+    }
+  }
+}

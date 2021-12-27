@@ -12,19 +12,23 @@
     </div>
     <div class="weather-card-footer__bottom">
       <h5 class="updated">
-        Updated at {{ updatedAt.toLocaleTimeString('en-US') }}
+        Updated at {{ new Date(updatedAt).toLocaleTimeString('en-US') }}
       </h5>
     </div>
   </div>
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+
 export default {
   name: 'WeatherCardFooter',
   props: {
     active: Boolean,
-    info: Object,
-    updatedAt: Date
+    info: Object
+  },
+  computed: {
+    ...mapGetters({ updatedAt: 'getUpdatedAt' })
   }
 }
 </script>
@@ -49,7 +53,7 @@ export default {
 
     .info {
       font-size: 16px;
-      font-weight: 600;
+      font-weight: 400;
       color: $color-dark-gray;
       letter-spacing: 0.2px;
       padding-top: 5px;

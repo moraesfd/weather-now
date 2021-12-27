@@ -1,54 +1,59 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import VuexPersistence from 'vuex-persist'
 import ApiService from '@/services/api'
 
 Vue.use(Vuex)
+
+const vuexLocal = new VuexPersistence({
+  key: 'weather-vuex',
+  storage: window.localStorage
+})
 
 export const store = new Vuex.Store({
   state: {
     weatherList: [],
     loadingStatus: false,
-    listWeatherCities: []
+    listWeatherCities: [],
+    updatedAt: null
   },
   mutations: {
-    updateWeatherList(state, weatherData) {
+    setWeatherList(state, weatherData) {
       state.weatherList = weatherData
     },
-    updateLoadingStatus(state, newLoadingStatus) {
+    setLoadingStatus(state, newLoadingStatus) {
       state.loadingStatus = newLoadingStatus
     },
-    updateListWeatherCities(state, listCities) {
+    setListWeatherCities(state, listCities) {
       state.listWeatherCities = listCities
+    },
+    setUpdatedAt(state, newDate) {
+      state.updatedAt = newDate
     }
   },
   actions: {
-    getWeatherList({ commit }) {
-      commit('updateLoadingStatus', true)
+    setWeatherList({ commit }) {
+      commit('setLoadingStatus', true)
       let listWeatherResponse = []
-      this.getters.listWeatherCities.map(async (city) => {
+      this.getters.getListWeatherCities.map(async (city) => {
         let weatherCity = {
           location: city,
-          weather: await ApiService.getWeatherByCity(city),
-          updated_at: new Date()
+          weather: await ApiService.getWeatherByCity(city)
         }
-        console.log(weatherCity)
         listWeatherResponse.push(weatherCity)
       })
-      commit('updateWeatherList', listWeatherResponse)
-      setInterval(function () {
-        commit('updateLoadingStatus', false)
-      }, 3000)
+      commit('setWeatherList', listWeatherResponse)
+      commit('setUpdatedAt', new Date())
+      setTimeout(function () {
+        commit('setLoadingStatus', false)
+      }, 2000)
     }
   },
   getters: {
-    weatherList(state) {
-      return state.weatherList
-    },
-    loadingStatus(state) {
-      return state.loadingStatus
-    },
-    listWeatherCities(state) {
-      return state.listWeatherCities
-    }
-  }
+    getWeatherList: (state) => state.weatherList,
+    getLoadingStatus: (state) => state.loadingStatus,
+    getListWeatherCities: (state) => state.listWeatherCities,
+    getUpdatedAt: (state) => state.updatedAt
+  },
+  plugins: [vuexLocal.plugin]
 })
