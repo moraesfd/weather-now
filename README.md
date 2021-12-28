@@ -71,7 +71,6 @@ As seguintes ferramentas foram usadas na construção do projeto:
 - [Prettier](https://prettier.io/)
 - [Cypress](https://www.cypress.io/)
 - [Sass/SCSS](https://sass-lang.com/)
-- [GitHub Pages](https://pages.github.com/)
 
 ### Features
 
