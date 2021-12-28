@@ -54,7 +54,7 @@ Para que o projeto possa ser executado, siga os seguintes passos:
 
 - Acesse o site da [API](https://openweathermap.org/)
 - Crie uma conta e gere uma key de acesso á API
-- No projeto, crie um arquivo com o nome .env
+- No projeto, crie um arquivo com o nome .env.local
 - Neste arquivo, adicione a variável VUE_APP_API_KEY=[key]
 
 ### Tecnologias
