@@ -60,13 +60,23 @@ export default {
 .weather-component {
   width: 100%;
   height: 100%;
-  min-height: 800px;
+  min-height: 834px;
   background-color: $color-bg-default;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
   gap: 50px;
-  margin-top: 60px;
+  margin-top: 55px;
+  position: relative;
+  z-index: 1;
+
+  @include breakpoint(md) {
+    min-height: inherit;
+    padding: 30px 0;
+    margin-top: 55px;
+    gap: 30px;
+    flex-direction: column;
+  }
 }
 </style>

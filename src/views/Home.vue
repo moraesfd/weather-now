@@ -45,7 +45,7 @@ export default {
 <style lang="scss">
 .home {
   width: 100%;
-  max-width: 1200px;
+  max-width: 1025px;
   margin: 0 auto;
 }
 </style>

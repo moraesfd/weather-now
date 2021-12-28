@@ -10,16 +10,20 @@ $color-red: #ed1946;
 
 // breakpoints
 @mixin breakpoint($point) {
-  @if $point == lg {
+  @if $point == xl {
     @media (min-width: 1200px) {
       @content;
     }
+  } @else if $point == lg {
+    @media (max-width: 1200px) {
+      @content;
+    }
   } @else if $point == md {
-    @media (min-width: 990px) {
+    @media (max-width: 890px) {
       @content;
     }
   } @else if $point == sm {
-    @media (min-width: 767px) {
+    @media (max-width: 767px) {
       @content;
     }
   } @else if $point == xs {

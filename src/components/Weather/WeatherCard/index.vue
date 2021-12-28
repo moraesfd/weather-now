@@ -58,17 +58,13 @@ export default {
 <style lang="scss">
 .weather-card {
   width: 100%;
-  max-width: 260px;
+  max-width: 255px;
   min-height: 223px;
   background-color: white;
   border-radius: 5px;
   box-shadow: 1px 0 5px rgba(51, 51, 51, 0.1);
   cursor: pointer;
   position: relative;
-
-  @include breakpoint(xs) {
-    background-color: blue;
-  }
 
   &.active {
     max-height: 320px;
