@@ -1,12 +1,12 @@
 <template>
   <div class="header-logo">
-    <img src="@/assets/images/logo.svg" alt="" class="header-logo__img">
+    <img src="@/assets/images/logo.svg" alt="" class="header-logo__img" />
   </div>
 </template>
 
 <script>
 export default {
-  name: "HeaderLogo"
+  name: 'HeaderLogo'
 }
 </script>
 
@@ -19,7 +19,7 @@ export default {
 
   &__img {
     width: 100%;
-    max-width: 160px;
+    max-width: 162px;
   }
 }
 </style>

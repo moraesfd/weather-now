@@ -3,49 +3,49 @@
     <HeaderComponent />
     <WeatherComponent />
     <FooterComponent
-      info="Weather Now - Uma aplicação teste que mostra a temperatura agora"
+      info="Weather Now - Uma aplicação teste que mostra a temperatura agora. 2021."
     />
   </div>
 </template>
 
 <script>
-import HeaderComponent from '@/components/Header';
-import WeatherComponent from '@/components/Weather';
+import HeaderComponent from '@/components/Header'
+import WeatherComponent from '@/components/Weather'
 import FooterComponent from '@/components/Footer'
 
 export default {
   name: 'HomePage',
   metaInfo() {
     return {
-      title: "Weather Now",
+      title: 'Weather Now',
       meta: [
         {
-          name: "description",
+          name: 'description',
           content:
-            "Weather Now - Uma aplicação teste que mostra a temperatura agora",
+            'Weather Now - Uma aplicação teste que mostra a temperatura agora'
         },
         {
-          property: "og:title",
-          content: "Weather Now",
+          property: 'og:title',
+          content: 'Weather Now'
         },
-        { property: "og:site_name", content: "Weather Now" },
-        { property: "og:type", content: "website" },
-        { name: "robots", content: "index,follow" },
-      ],
-    };
+        { property: 'og:site_name', content: 'Weather Now' },
+        { property: 'og:type', content: 'website' },
+        { name: 'robots', content: 'index,follow' }
+      ]
+    }
   },
   components: {
     HeaderComponent,
     WeatherComponent,
     FooterComponent
-  },
-};
+  }
+}
 </script>
 
 <style lang="scss">
 .home {
   width: 100%;
-  max-width: 1200px;
+  max-width: 1025px;
   margin: 0 auto;
 }
 </style>

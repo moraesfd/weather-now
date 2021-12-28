@@ -3,33 +3,32 @@
     <div class="weather-card-footer__top" v-if="active">
       <div class="left">
         <h4 class="title">Humidity</h4>
-        <h4 class="info">{{ info.humidity }}</h4>
+        <h4 class="info">{{ info.humidity + '%' }}</h4>
       </div>
       <div class="right">
         <h4 class="title">Pressure</h4>
-        <h4 class="info">{{ info.pressure }}</h4>
+        <h4 class="info">{{ info.pressure + 'hPa' }}</h4>
       </div>
     </div>
     <div class="weather-card-footer__bottom">
-      <h5 class="updated">Updated at {{ info.updated }}</h5>
+      <h5 class="updated">
+        Updated at {{ new Date(updatedAt).toLocaleTimeString('en-US') }}
+      </h5>
     </div>
   </div>
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+
 export default {
   name: 'WeatherCardFooter',
   props: {
-    active: Boolean
+    active: Boolean,
+    info: Object
   },
-  data() {
-    return {
-      info: {
-        humidity: '75%',
-        pressure: '892hPa',
-        updated: '02:48:27 PM'
-      }
-    }
+  computed: {
+    ...mapGetters({ updatedAt: 'getUpdatedAt' })
   }
 }
 </script>
@@ -54,7 +53,7 @@ export default {
 
     .info {
       font-size: 16px;
-      font-weight: 600;
+      font-weight: 400;
       color: $color-dark-gray;
       letter-spacing: 0.2px;
       padding-top: 5px;
