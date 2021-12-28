@@ -1,4 +1,3 @@
-// .github/workflows/deploy.yaml
 name: deploy
 on:
   push:
@@ -30,4 +29,4 @@ jobs:
           git init
           git add -A
           git commit -m "🚀 Deploy id ${GITHUB_RUN_ID}"
-          git push -f "https://github.com/${GITHUB_REPOSITORY}.git" master:gh-pages
+          git push -f "https://github.com/weather-now.git" master:gh-pages
