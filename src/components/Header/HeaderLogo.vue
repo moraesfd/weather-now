@@ -19,7 +19,7 @@ export default {
 
   &__img {
     width: 100%;
-    max-width: 160px;
+    max-width: 162px;
   }
 }
 </style>
