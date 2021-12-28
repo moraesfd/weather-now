@@ -82,7 +82,6 @@ As seguintes ferramentas foram usadas na construção do projeto:
 - [x] Utilizando Vuex para gerenciar estados
 - [x] Persistir os dados no localstorage com vuex-persist
 - [x] Pequenos Testes E2E com Cypress
-- [x] Deploy da aplicação no Github Pages
 
 ### Autor
 
