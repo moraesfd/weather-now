@@ -2,12 +2,6 @@
 
 > Este projeto foi desenvolvido como teste para demonstrar os conhecimentos técnicos de Front-End para uma vaga no processo seletivo da Conta Azul.
 
-### Website Preview
-
----
-
-🏠 [Homepage](https://moraesfd.github.io/maganets-wishlist/)
-
 ### Pré-requisitos
 
 ---
