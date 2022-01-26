@@ -1,6 +1,6 @@
 <h1 align="center">Bem-vindo(a) ao weather-now 👋</h1>
 
-> Este projeto foi desenvolvido como teste para demonstrar os conhecimentos técnicos de Front-End para uma vaga no processo seletivo da Conta Azul.
+> Este projeto foi desenvolvido como teste para demonstrar meus conhecimentos técnicos de Front-End e linguagem Vue.js.
 
 ### Pré-requisitos
 
